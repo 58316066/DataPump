@@ -90,7 +90,7 @@ public class DataPumpWriter {
         String scriptControl = "- Control: \n" +
                 "    filename: " + fileName + ".csv\n" +
                 "    md5sum: " + checksum + "\n" +
-                "    line: " + (field_arg_name.size() * 2 + row_number + 3) + "\n";
+                "    line: " + (field_arg_name.size() * 2 + row_number + 5) + "\n";
 
         File fileControl = new File(partFile + fileName + ".control");
 
