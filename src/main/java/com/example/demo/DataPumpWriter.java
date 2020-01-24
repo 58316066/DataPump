@@ -64,6 +64,7 @@ public class DataPumpWriter {
             if (!writeHeader) {
                 writeData_Null(p);
                 writeData_Blank(p);
+                writeDuplicate(p);
                 writeHeader = true;
             }
             /** End write Data_Null and Data Blank
@@ -101,9 +102,27 @@ public class DataPumpWriter {
         System.out.println(fileControl.getPath());
     }
 
+    int fieldSize = field_arg_name.size();
+
+    private void writeDuplicate(PrintWriter p) {
+        /** Data Duplicate */
+        int loop = 0;
+        while (loop != 2) {
+            loop++;
+            for (int i = 1; i <= fieldSize; i++) {
+                if (i == fieldSize) {
+                    p.print("Dup");
+                } else {
+                    p.print("Dup,");
+                }
+            }
+            p.println();
+        }
+    }
+
     private void writeData_Blank(PrintWriter p) {
         /** DataBlank */
-        int fieldSize = field_arg_name.size();
+
         for (int i = 1; i <= fieldSize; i++) {
             for (int j = 1; j < i; j++) {
                 p.print(",");
